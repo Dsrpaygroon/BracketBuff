@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Patrick\\Documents\\Git\\BracketBuff\\BracketBuff\\BracketBuff.csproj",
+      "projectUniqueName": "C:\\Users\\Patrick\\Documents\\Git\\BracketBuff\\BracketBuff.csproj",
       "projectName": "BracketBuff",
-      "projectPath": "C:\\Users\\Patrick\\Documents\\Git\\BracketBuff\\BracketBuff\\BracketBuff.csproj",
+      "projectPath": "C:\\Users\\Patrick\\Documents\\Git\\BracketBuff\\BracketBuff.csproj",
       "packagesPath": "C:\\Users\\Patrick\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Patrick\\Documents\\Git\\BracketBuff\\BracketBuff\\obj\\",
+      "outputPath": "C:\\Users\\Patrick\\Documents\\Git\\BracketBuff\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Patrick\\AppData\\Roaming\\NuGet\\NuGet.Config",
