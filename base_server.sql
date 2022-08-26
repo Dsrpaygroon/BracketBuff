@@ -1,0 +1,118 @@
+USE `bracket-buff`;
+
+SET FOREIGN_KEY_CHECKS = 0;
+DROP TABLE IF EXISTS ban;
+DROP TABLE IF EXISTS match_team;
+DROP TABLE IF EXISTS match_player_stats;
+DROP TABLE IF EXISTS match_player;
+DROP TABLE IF EXISTS `match`;
+DROP TABLE IF EXISTS roster;
+DROP TABLE IF EXISTS season;
+DROP TABLE IF EXISTS division;
+DROP TABLE IF EXISTS league;
+DROP TABLE IF EXISTS champion;
+DROP TABLE IF EXISTS stat_name;
+DROP TABLE IF EXISTS team;
+DROP TABLE IF EXISTS player;
+SET FOREIGN_KEY_CHECKS = 1;
+
+CREATE TABLE player(
+    id INT UNSIGNED NOT NULL,
+    PRIMARY KEY(id),
+    `name` VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE team(
+    id INT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(255) NOT NULL,
+    logo VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE stat_name(
+    id INT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE champion(
+    id INT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE league(
+    id INT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
+    `name` INT NOT NULL,
+    logo VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE division(
+    id INT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
+    league_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (league_id) REFERENCES league(id),
+    logo VARCHAR(255) NULL,
+    `name` VARCHAR(255) NOT NULL
+);
+    
+CREATE TABLE season(
+    id INT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
+    division_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (division_id) REFERENCES division(id),
+    `name` VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE roster(
+    id INT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
+    player_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (player_id) REFERENCES player(id),
+    season_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (season_id) REFERENCES season(id),
+    team_id INT UNSIGNED NOT NULL UNIQUE,
+    FOREIGN KEY (team_id) REFERENCES team(id),
+    captain BOOLEAN NOT NULL
+);
+    
+CREATE TABLE `match`(
+    id INT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
+    season_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (season_id) REFERENCES season(id),
+    tournament_code VARCHAR(255) NOT NULL,
+    start_timestamp BIGINT NOT NULL,
+    end_timestamp BIGINT NOT NULL,
+    duration BIGINT NULL,
+    creation BIGINT NULL
+);
+
+CREATE TABLE match_team(
+    id INT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
+    team_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (team_id) REFERENCES team(id),
+    match_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (match_id) REFERENCES `match`(id)
+);
+
+CREATE TABLE match_player(
+    id INT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
+    champion_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (champion_id) REFERENCES champion(id),
+    player_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (player_id) REFERENCES player(id),
+    match_team_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (match_team_id) REFERENCES match_team(id)
+);
+    
+CREATE TABLE match_player_stats(
+    id INT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
+    match_player_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (match_player_id) REFERENCES match_player(id),
+    stat_name_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (stat_name_id) REFERENCES stat_name(id),
+    value VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE ban(
+    id INT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
+    match_team_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (match_team_id) REFERENCES match_team(id),
+    champion_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (champion_id) REFERENCES champion(id),
+    `order` INT NOT NULL
+);
