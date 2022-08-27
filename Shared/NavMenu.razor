@@ -1,39 +1,16 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">BracketBuff</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
+﻿<div class="flex bg-stone-300 h-20 shadow-lg text-3xl place-items-center">
+	<div class="flex text-7xl select-none">
+		B<p class="text-green-600">B</p>
+	</div>
+	<div class="flex space-x-12 grow px-12">
+		<button>Home</button>
+		<button>Tournaments</button>
+		<button>Players</button>
+		<button>Teams</button>
+		<button>Champions</button>
+	</div>
+	<div class="flex bg-blue-400 h-12 w-96 place-items-center justify-between m-12 border border-black text-2xl">Filler For Search Bar
+		<div class="w-10 h-10 bg-black m-2 transition duration-100 hover:bg-white"></div>
+	</div>
+	<button class="px-8">Sign In</button>
 </div>
-
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </div>
-    </nav>
-</div>
-
-@code {
-    private bool collapseNavMenu = true;
-
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
-}

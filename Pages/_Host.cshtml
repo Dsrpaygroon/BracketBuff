@@ -2,8 +2,11 @@
 @namespace BracketBuff.Pages
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
-    Layout = "_Layout";
+    Layout = null;
 }
 
-<component type="typeof(App)" render-mode="ServerPrerendered" />
-<link rel="stylesheet" href="css/output.css" />
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="css/output.css" />
+    <component type="typeof(App)" render-mode="ServerPrerendered" />
+</html>
