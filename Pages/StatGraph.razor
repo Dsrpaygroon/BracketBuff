@@ -1,9 +1,7 @@
 ﻿@page "/stats"
-<page class="justify-center w-full h-full">
-    <div class="w-11/12 h-1/2 select-none overflow-scroll">
+    <div class="flex w-11/12 h-1/2 select-none overflow-scroll">
         <GraphTemplate StatValues="statValues" StatNames="statNames"/>
     </div>
-</page>
 @code {
     private List<String> statNames = new List<String>();
     private List<List<String>> statValues = new List<List<String>>();

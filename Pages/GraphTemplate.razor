@@ -1,17 +1,17 @@
-﻿<table class="text-4xl w-full h-full justify-center overflow-scroll">
+﻿<table class="text-4xl text-center select-none">
     <thead>
-        <tr class="border-b bg-primary p-12">
+        <tr class="bg-primary">
             @foreach(String name in StatNames){
-                <td class="cursor-pointer border border-black">@name</td>
+                <td class="cursor-pointer border">@name</td>
             }
         </tr>
     </thead>
-    <tbody class="select-none">
+    <tbody>
         @foreach (List<String> row in StatValues) {
-            <tr class="hover:bg-tertiary odd:bg-white even:bg-grey min-w-32">
+            <tr class="odd:bg-white even:bg-grey hover:bg-tertiary">
                 @foreach (String stat in row)
                 {
-                    <td class="border border-black">@stat</td>
+                    <td class="border px-3">@stat</td>
                 }
             </tr>
         }
