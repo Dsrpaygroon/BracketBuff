@@ -1,0 +1,25 @@
+﻿@page "/stats"
+<page class="justify-center w-full h-full">
+    <div class="w-11/12 h-1/2 select-none overflow-scroll">
+        <GraphTemplate StatValues="statValues" StatNames="statNames"/>
+    </div>
+</page>
+@code {
+    private List<String> statNames = new List<String>();
+    private List<List<String>> statValues = new List<List<String>>();
+
+    public void AddStats(){
+        for (int i = 0; i < 100; i++) {
+            statNames.Add(i.ToString());
+            List<String> temp = new List<String>();
+            for (int j = 0; j < 100; j++) {
+                temp.Add(j.ToString());
+            }
+            statValues.Add(temp);
+        }
+    }
+
+    protected override async Task OnInitializedAsync() {
+        AddStats();
+    }
+}

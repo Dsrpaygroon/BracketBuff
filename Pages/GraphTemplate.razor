@@ -1,0 +1,27 @@
+﻿<table class="text-4xl w-full h-full justify-center overflow-scroll">
+    <thead>
+        <tr class="border-b bg-primary p-12">
+            @foreach(String name in StatNames){
+                <td class="cursor-pointer border border-black">@name</td>
+            }
+        </tr>
+    </thead>
+    <tbody class="select-none">
+        @foreach (List<String> row in StatValues) {
+            <tr class="hover:bg-tertiary odd:bg-white even:bg-grey min-w-32">
+                @foreach (String stat in row)
+                {
+                    <td class="border border-black">@stat</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    [Parameter]
+    public List<String> StatNames { get; set; }
+    [Parameter]
+    public List<List<String>> StatValues { get; set; }
+}
+

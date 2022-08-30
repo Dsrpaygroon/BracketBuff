@@ -1,14 +1,20 @@
-﻿@tailwind base;
+﻿
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
     html {
-        @apply font-gugi;
+        @apply font-oxanium;
     }
 }
 
 @font-face {
     font-family: "Gugi";
     src: url("../Gugi-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Oxanium";
+    src: url("../Oxanium.ttf");
 }
