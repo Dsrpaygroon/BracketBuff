@@ -1,27 +1,27 @@
-﻿<table class="text-4xl text-center select-none">
-    <thead>
-        <tr class="bg-primary">
-            @foreach(String name in StatNames){
-                <td class="cursor-pointer border">@name</td>
-            }
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (List<String> row in StatValues) {
-            <tr class="odd:bg-white even:bg-grey hover:bg-tertiary">
-                @foreach (String stat in row)
-                {
-                    <td class="border px-3">@stat</td>
+﻿
+<div class="overflow-y-hidden rounded-lg shadow border-8 h-3/4 pb-15">
+    <table class="text-4xl text-center select-none table-fixed h-1/2 overflow-hidden">
+        <thead>
+            <tr class="bg-primary">
+                @foreach(String name in StatNames){
+                    <td class="cursor-pointer border">@name</td>
                 }
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (List<String> row in StatValues) {
+                <tr class="odd:bg-white even:bg-grey hover:bg-tertiary">
+                    @foreach (String stat in row)
+                    {
+                        <td class="border px-3">@stat</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
 @code {
-    [Parameter]
-    public List<String> StatNames { get; set; }
-    [Parameter]
-    public List<List<String>> StatValues { get; set; }
+    [Parameter] public List<String> StatNames { get; set; }
+    [Parameter] public List<List<String>> StatValues { get; set; }
 }
-
