@@ -10,10 +10,6 @@
     <Content Remove="Pages\Dropdown.razor" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\Images\" />
-  </ItemGroup>
-
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="npx tailwindcss -i ./wwwroot/css/tailwind.css -o ./wwwroot/css/output.css&#xD;&#xA;" />
   </Target>
@@ -27,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Pages\Dropdown.razor" />
+    <None Include="Shared\Dropdown.razor" />
   </ItemGroup>
 
 </Project>
