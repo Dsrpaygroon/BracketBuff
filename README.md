@@ -5,3 +5,12 @@
 Figma Link: https://www.figma.com/file/w4rXZZiDKXuvYcwg4Zm7bl/BracketBuff?node-id=0%3A1
 
 Design Brief: https://walling.app/vQpKhkBEy1OFoQXTx7A6/bracketbuff
+
+### Setting Up Tailwind External Tool
+Tools > External Tools > Add
+
+- Title: Tailwind Setup
+- Command: ./tailwind.bat
+- Initial Directory: $(SolutionDir)
+
+Tools > Tailwind Setup
