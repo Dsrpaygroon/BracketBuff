@@ -10,7 +10,7 @@ Design Brief: https://walling.app/vQpKhkBEy1OFoQXTx7A6/bracketbuff
 Tools > External Tools > Add
 
 - Title: Tailwind Setup
-- Command: ./tailwind.bat
+- Command: ./Properties/tailwind.bat
 - Initial Directory: $(SolutionDir)
 
 Tools > Tailwind Setup
