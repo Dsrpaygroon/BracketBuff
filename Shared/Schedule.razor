@@ -1,19 +1,15 @@
 ﻿
-<div class="m-16">
-    <table class="text-4xl text-center select-none table-fixed overflow-hidden">
-        <thead>
-            <tr>
-                Custom Thing
-            </tr>
-        </thead>
+<div class="flex-row">
+    <p class="w-full text-white text-center text-6xl">Schedule</p>
+    <table class="text-2xl text-center select-none table-fixed overflow-hidden">
         <tbody>
             @for (int i = 0; i < 10; i++) {
-                <tr class="odd:bg-white even:bg-grey hover:bg-tertiary h-20">
-                    <td class="border px-3">Testing</td>
-                    <td><img class="object-cover h-20" src="Images/StatsLogo2.png"></td>
-                    <td class="border px-3">VS</td>
-                    <td><img class="object-cover h-20" src="Images/StatsLogo2.png"></td>
-                    <td class="border px-3">Testing</td>
+                <tr class="even:bg-white odd:bg-grey hover:bg-tertiary cursor-pointer">
+                    <td class="border px-3 w-48">TEG Winrate Don't Matter</td>
+                    <td class="border"><img class="w-16 m-1 border" src="Images/StatsLogo2.png"></td>
+                    <td class="text-4xl border px-3 w-24">3-2</td>
+                    <td class="border"><img class="w-16 m-1 border" src="Images/StatsLogo2.png"></td>
+                    <td class="border px-3 w-48">Testing</td>
                 </tr>
             }
         </tbody>
@@ -22,5 +18,4 @@
 
 @code {
     [Parameter] public List<String> StatNames { get; set; }
-    [Parameter] public List<List<String>> StatValues { get; set; }
 }
